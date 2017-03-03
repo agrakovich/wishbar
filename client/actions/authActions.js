@@ -9,7 +9,7 @@ export function loginSuccess() {
 export function loginUser(credentials) {
     return function(dispatch) {
         return authService.login(credentials).then(response => {
-            sessionStorage.setItem('jwt', response.jwt);
+            localStorage.setItem('jwt', response.jwt);
             dispatch(loginSuccess());
         }).catch(error => {
             throw(error);

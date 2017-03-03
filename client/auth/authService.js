@@ -1,28 +1,33 @@
+import config from '../config';
+
 class AuthService {
     static login(credentials) {
-        debugger;
-        const request = new Request(`${process.env.API_HOST}/login`, {
+        const request = new Request(`${config.apiUrl}/api/signup`, {
             method: 'POST',
             headers: new Headers({
                 'Content-Type': 'application/json'
             }),
-            body: JSON.stringify({auth: credentials})
+            body: JSON.stringify(credentials)
         });
 
 
-        return fetch(request).then(response => {
-            return response.json();
+        return fetch(request).then(response => response.json().then(data => ({ data, response })))
+            .then(({ data, response }) => {
+                if (!response.ok) {
+                    return Promise.reject(data)
+                }
+                return data;
         }).catch(error => {
             return error;
         });
     }
 
     static isLoggedIn() {
-        return !!sessionStorage.jwt;
+        return !!localStorage.jwt;
     }
 
     static logOut() {
-        sessionStorage.removeItem('jwt');
+        localStorage.removeItem('jwt');
     }
 }
 

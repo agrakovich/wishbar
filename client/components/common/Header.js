@@ -20,24 +20,12 @@ class Header extends React.Component {
         if (this.props.logged_in) {
             return (
                 <nav>
-                    <IndexLink to="/" activeClassName="active">Home</IndexLink>
-                    {" | "}
-                    <Link to="/cats" activeClassName="active">Cats</Link>
-                    {" | "}
-                    <Link to="/about" activeClassName="active">About</Link>
-                    {" | "}
                     <a href="/logout" onClick={this.logOut}>log out</a>
                 </nav>
             );
         } else {
             return (
                 <nav>
-                    <IndexLink to="/" activeClassName="active">Home</IndexLink>
-                    {" | "}
-                    <Link to="/cats" activeClassName="active">Cats</Link>
-                    {" | "}
-                    <Link to="/about" activeClassName="active">About</Link>
-                    {" | "}
                     <Link to="/login" activeClassName="active">log in</Link>
                 </nav>
             );
@@ -50,7 +38,7 @@ Header.propTypes = {
 }
 
 function mapStateToProps(state, ownProps) {
-    return { logged_in: state.session };
+    return { logged_in: state.auth.session };
 }
 
 function mapDispatchToProps(dispatch) {

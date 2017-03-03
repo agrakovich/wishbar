@@ -3,8 +3,8 @@ const WishTypeModel = require('../models/wishType');
 const WishModel = require('../models/wish');
 const wishRoutes = express.Router();
 
-wishRoutes.get('/wishtype', function(req, res) {
-    return WishTypeModel.find(function (err, wishes) {
+wishRoutes.get('/wishtype', (req, res) => {
+    return WishTypeModel.find((err, wishes) => {
         if (!err) {
             return res.send(wishes);
         } else {
@@ -14,13 +14,13 @@ wishRoutes.get('/wishtype', function(req, res) {
     });
 });
 
-wishRoutes.post('/wishtype', function(req, res) {
+wishRoutes.post('/wishtype', (req, res) => {
     const wishType = new WishTypeModel({
         name: req.body.name,
         description: req.body.description
     });
 
-    wishType.save(function (err) {
+    wishType.save((err) => {
         if (!err) {
             return res.send({ status: 'OK' });
         } else {
@@ -36,14 +36,13 @@ wishRoutes.post('/wishtype', function(req, res) {
     });
 });
 
-
-wishRoutes.delete('/wishtype/:id', function (req, res){
-    return WishTypeModel.findById(req.params.id, function (err, wishType) {
+wishRoutes.delete('/wishtype:id', (req, res) => {
+    return WishTypeModel.findById(req.params.id, (err, wishType) => {
         if(!wishType) {
             res.statusCode = 404;
             return res.send({ error: 'Not found' });
         }
-        return wishType.remove(function (err) {
+        return wishType.remove((err) => {
             if (!err) {
                 return res.send({ status: 'OK' });
             } else {

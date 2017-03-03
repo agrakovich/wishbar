@@ -5,11 +5,11 @@ import { browserHistory } from 'react-router';
 export default function authReducer(state = initialState.session, action) {
     switch(action.type) {
         case types.LOG_IN_SUCCESS:
-            browserHistory.push('/wishes')
-            return !!sessionStorage.jwt
+            browserHistory.push('/')
+            return !!localStorage.jwt
         case types.LOG_OUT:
             browserHistory.push('/')
-            return !!sessionStorage.jwt
+            return !!localStorage.jwt
         default:
             return state;
     }

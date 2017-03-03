@@ -1,3 +1,3 @@
 export default {
-    session: !!sessionStorage.jwt
+    session: !!localStorage.jwt
 }

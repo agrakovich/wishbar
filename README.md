@@ -1,6 +1,6 @@
 # wishbar
 
-nodejs must be installed
+nodejs must be installed, 
 install packages, and run:
 ```sh
 npm install 

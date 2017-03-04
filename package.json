@@ -37,6 +37,8 @@
     "express-session": "^1.14.2",
     "jsonwebtoken": "^7.3.0",
     "method-override": "^2.3.7",
+    "mongoose": "^4.7.5",
+    "mongoose-relationship": "^0.1.5",
     "morgan": "^1.7.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",

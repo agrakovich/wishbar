@@ -23,7 +23,7 @@
     "babel-preset-react": "^6.23.0",
     "extract-text-webpack-plugin": "^2.0.0",
     "method-override": "^2.3.7",
-    "nodemon": "^1.11.0",
+    "nodemon": "^1.11.0"
   },
   "dependencies": {
     "babel-polyfill": "^6.23.0",

@@ -1,8 +1,20 @@
 import React, {PropTypes} from 'react';
-import TextInput from './common/TextInput';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as authActions from '../actions/authActions';
+import { Field, reduxForm } from 'redux-form'
+
+const renderField = ({ input, label, type, meta: { touched, error } }) => (
+    <div className={"form-group"  + (touched && error ? " has-error" : "")}>
+        <label className={"form-control-label"}>{label}</label>
+        <div>
+            <input className="form-control" {...input} placeholder={label} type={type}/>
+            {touched && error && <div>{error}</div>}
+        </div>
+    </div>
+)
+
+
 
 class LogInPage extends React.Component {
     constructor(props) {
@@ -20,31 +32,41 @@ class LogInPage extends React.Component {
     }
 
     onSave(event) {
+        if(this.props.invalid){
+            return;
+        }
         event.preventDefault();
         this.props.actions.loginUser(this.state.credentials);
     }
 
+    componentWillUnMount(){
+        this.props.reset();
+    }
+
     render() {
+        const { handleSubmit, pristine, reset, submitting } = this.props;
         return (
             <div>
-                <form>
-                    <TextInput
+                <form onSubmit={handleSubmit(this.onSave)}>
+                    <Field
+                        label="Ваше имя"
                         name="name"
-                        label="name"
+                        type="text"
                         value={this.state.credentials.name}
-                        onChange={this.onChange}/>
+                        component={renderField}
+                        onChange={this.onChange} />
 
-                    <TextInput
+                    <Field
+                        label="Место"
                         name="place"
-                        label="place"
-                        type="place"
+                        type="text"
                         value={this.state.credentials.place}
-                        onChange={this.onChange}/>
-
-                    <input
+                        component={renderField}
+                        onChange={this.onChange} />
+                    <button
                         type="submit"
                         className="btn btn-primary"
-                        onClick={this.onSave}/>
+                        onClick={this.onSave}>Отправить</button>
                     {" "}
                 </form>
             </div>
@@ -57,4 +79,19 @@ function mapDispatchToProps(dispatch) {
         actions: bindActionCreators(authActions, dispatch)
     };
 }
-export default connect(null, mapDispatchToProps)(LogInPage);
+export default connect(null, mapDispatchToProps)(reduxForm({
+    form: 'loginForm',
+    validate: values => {
+        const errors = {};
+
+        if (!values.name) {
+            errors.name = 'Имя обязательно.';
+        }
+
+        if (!values.place) {
+            errors.place = 'Мы должны знать, куда доставить заказ.';
+        }
+
+        return errors;
+    }
+})(LogInPage));

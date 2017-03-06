@@ -1,0 +1,24 @@
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
+
+$medium-screen: 40em !default;
+$sans-serif: 'Questrial', sans-serif;
+$serif: 'Sanchez', serif;
+$texture-top-background: lighten(#1c2b42, 1%);
+$texture-bottom-background: darken(#ffffff, 10%);
+
+.has-error{
+  color: #a94442;
+}
+
+.wrapper{
+  width: 100%;
+  min-height: 100vh;
+}
+.container{
+  background-color: white;
+  width: 65%;
+  min-height: 100vh;
+  position: relative;
+  margin: 0 auto;
+  text-align: left;
+}

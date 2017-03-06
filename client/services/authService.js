@@ -1,4 +1,5 @@
 import config from '../config';
+import * as serviceUtils from './serviceUtils';
 
 class AuthService {
     static login(credentials) {
@@ -10,16 +11,7 @@ class AuthService {
             body: JSON.stringify(credentials)
         });
 
-
-        return fetch(request).then(response => response.json().then(data => ({ data, response })))
-            .then(({ data, response }) => {
-                if (!response.ok) {
-                    return Promise.reject(data)
-                }
-                return data;
-        }).catch(error => {
-            return error;
-        });
+        return serviceUtils.fetchRequest(request);
     }
 
     static isLoggedIn() {

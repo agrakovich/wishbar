@@ -4,7 +4,7 @@ const bodyParser  = require('body-parser');
 const methodOverride  = require('method-override');  // put and delete support
 const morgan      = require('morgan');
 const mongoose    = require('mongoose');
-
+const jwt = require('jsonwebtoken');
 
 const botService  = require('./bot/botService');
 
@@ -70,8 +70,32 @@ app.use(methodOverride()); // поддержка put и delete
 app.use(morgan('dev'));
 
 
-app.use(wishRoutes);
-app.use(userRoutes);
+//auth meddleware
+app.use(function(req, res, next) {
+    // check header or url parameters or post parameters for token
+    let token = req.headers['authorization'];
+
+    if (!token) return next(); //if no token, continue
+
+    token = token.replace('Bearer ', '');
+
+    jwt.verify(token, config.secret_key, function(err, user) {
+        console.log(err);
+        if (err) {
+            return res.status(401).json({
+                success: false,
+                message: 'Please register Log in using a valid email to submit posts'
+            });
+        } else {
+            req.user = user; //set the user to req so other routes can use it
+            console.log(req.user);
+            next();
+        }
+    });
+});
+
+app.use('/api', wishRoutes);
+app.use('/api', userRoutes);
 
 app.set('port',  process.env.PORT || config.port);
 
@@ -89,6 +113,16 @@ app.get('/', (req, res) => {
 }).listen(app.get('port'), () => {
     console.log('App is running, server is listening on port ', app.get('port'));
 });
+
+
+//kludges for react-router
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'index.html'));
+});
+app.get('/wish', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'index.html'));
+});
+
 
 app.use((req, res, next) => {
     res.status(404);

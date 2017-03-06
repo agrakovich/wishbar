@@ -1,15 +1,13 @@
 import * as types from '../actions/actionTypes';
 import initialState from './initialState';
-import { browserHistory } from 'react-router';
 
-export default function authReducer(state = initialState.session, action) {
+
+export default function authReducer(state = initialState, action) {
     switch(action.type) {
         case types.LOG_IN_SUCCESS:
-            browserHistory.push('/')
-            return !!localStorage.jwt
+            return { ...state, session: !!localStorage.jwt }
         case types.LOG_OUT:
-            browserHistory.push('/')
-            return !!localStorage.jwt
+            return { ...state, session: !!localStorage.jwt }
         default:
             return state;
     }

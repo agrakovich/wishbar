@@ -3,6 +3,7 @@ import { Link, IndexLink } from 'react-router';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as authActions from '../../actions/authActions';
+import './header.scss'
 
 
 class Header extends React.Component {
@@ -19,15 +20,16 @@ class Header extends React.Component {
     render() {
         if (this.props.logged_in) {
             return (
-                <nav>
-                    <a href="/logout" onClick={this.logOut}>log out</a>
-                </nav>
+                <header>
+                    <h1>Бар желаний</h1>
+                    <a className="btn btn-default pull-right logout" href="/logout" onClick={this.logOut}>Выйти</a>
+                </header>
             );
         } else {
             return (
-                <nav>
-                    <Link to="/login" activeClassName="active">log in</Link>
-                </nav>
+                <header>
+                    <h1>Бар желаний</h1>
+                </header>
             );
         }
     }

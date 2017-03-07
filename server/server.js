@@ -88,7 +88,6 @@ app.use(function(req, res, next) {
             });
         } else {
             req.user = user; //set the user to req so other routes can use it
-            console.log(req.user);
             next();
         }
     });
@@ -96,6 +95,7 @@ app.use(function(req, res, next) {
 
 app.use('/api', wishRoutes);
 app.use('/api', userRoutes);
+app.use('/api/admin', adminRoutes);
 
 app.set('port',  process.env.PORT || config.port);
 
@@ -116,12 +116,20 @@ app.get('/', (req, res) => {
 
 
 //kludges for react-router
-app.get('/login', (req, res) => {
+app.get([
+    '/login',
+    '/admin',
+    '/admin/panel',
+    '/wish',
+    '/admin/wish/categories',
+    '/admin/wish/categories/add',
+    '/admin/wish/types',
+    '/admin/wish/types/add',
+    '/ordercreated'
+], (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'index.html'));
 });
-app.get('/wish', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'index.html'));
-});
+
 
 
 app.use((req, res, next) => {

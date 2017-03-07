@@ -1,10 +1,20 @@
 header{
-  height: 80px;
   h1{
     display: inline-block;
-    margin-left: 200px;
   }
+  .header{
+    margin-bottom: 30px;
+    background-color: #ff9400;
+    margin-top: 0;
+    padding: 20px 20px 20px 40px;
 
+    h1{
+      color: #ffffff;
+      font-size: 36pt;
+      font-family: 'Lobster';
+      margin-left: 50px;
+    }
+  }
   .btn{
     margin-top: 25px;
   }

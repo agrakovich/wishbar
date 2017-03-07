@@ -18,21 +18,18 @@ class Header extends React.Component {
     }
 
     render() {
-        if (this.props.logged_in) {
-            return (
-                <header>
-                    <h1>Бар желаний</h1>
-                    <a className="btn btn-default pull-right logout" href="/logout" onClick={this.logOut}>Выйти</a>
-                </header>
-            );
-        } else {
-            return (
-                <header>
-                    <h1>Бар желаний</h1>
-                </header>
-            );
-        }
-    }
+        return (
+            <header>
+                <div className="row header">
+                    <div className="col-xs-12 col-sm-6 col-md-8"><h1>Кафе желаний "Плексочка"</h1></div>
+                    <div className="col-xs-6 col-md-4">
+                        {this.props.logged_in &&
+                        <a className="btn btn-primary pull-right logout" href="/logout" onClick={this.logOut}>Выйти</a> }
+                    </div>
+                </div>
+            </header>
+        );
+}
 }
 
 Header.propTypes = {

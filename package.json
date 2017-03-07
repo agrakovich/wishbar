@@ -35,6 +35,7 @@
     "express-session": "^1.14.2",
     "extract-text-webpack-plugin": "^2.0.0",
     "file-loader": "^0.10.1",
+    "group-array": "^0.3.2",
     "jsonwebtoken": "^7.3.0",
     "method-override": "^2.3.7",
     "moment": "^2.17.1",

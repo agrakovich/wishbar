@@ -1,6 +1,9 @@
 export default {
     session: !!localStorage.jwt,
     wishTypes: [],
+    wishCategories: [],
+    wishOrders: [],
     checkedWishes: [],
-    wishOrderErrors: []
+    wishOrderErrors: [],
+    authErrors: []
 }

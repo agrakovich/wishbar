@@ -5,9 +5,21 @@ import initialState from './initialState';
 export default function wishReducer(state = initialState, action) {
     switch(action.type) {
         case types.WISH_TYPES_RECEIVED:
+        case types.WISH_TYPE_WAS_DELETED:
             return {
                 ...state,
                 wishTypes: action.payload
+            };
+        case types.WISH_CATEGORIES_RECEIVED:
+        case types.WISH_CATEGORY_WAS_DELETED:
+            return {
+                ...state,
+                wishCategories: action.payload
+            };
+        case types.WISH_ORDERS_RECEIVED:
+            return {
+                ...state,
+                wishOrders: action.payload
             };
         case types.WISH_CHECKED:
             return {

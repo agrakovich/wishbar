@@ -5,9 +5,11 @@ import './app.scss'
 class App extends React.Component {
     render() {
         return (
-            <div>
+            <div className>
                 <Header />
-                {this.props.children}
+                <div className="main-content row">
+                    {this.props.children}
+                </div>
             </div>
         );
     }

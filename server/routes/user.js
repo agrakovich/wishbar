@@ -25,7 +25,7 @@ userRoutes.post('/signup', (req, res, next) => {
 });
 
 userRoutes.post('/signin', (req, res) => {
-    UserModel.findOne({username: req.body.username})
+    UserModel.findOne({name: req.body.username})
         .exec((err, user) => {
             if (err) throw err;
             if (!user) {
@@ -54,7 +54,7 @@ userRoutes.post('/signin', (req, res) => {
 
 function generateToken(user) {
 
-    return jwt.sign(user, config.secret_key, {
+    return jwt.sign({ id: user._id, name: user.name, place: user.place, role: user.role }, config.secret_key, {
         expiresIn: 60 * 60 * 24 // expires in 24 hours
     });
 }

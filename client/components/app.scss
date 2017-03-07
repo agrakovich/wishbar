@@ -10,15 +10,33 @@ $texture-bottom-background: darken(#ffffff, 10%);
   color: #a94442;
 }
 
+.home-content{
+  margin: 45px;
+}
+.make-order{
+  margin-left: 45px;
+}
+.main-content{
+  padding-left: 15px;
+  padding-right: 15px;
+}
 .wrapper{
   width: 100%;
   min-height: 100vh;
+  background-image: url(http://goldwallpapers.com/uploads/posts/orange-flowers-wallpaper/orange_flowers_wallpaper_015.jpg);
+  //background-image: url( https://look.com.ua/pic/201210/1920x1080/look.com.ua-57509.jpg);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: absolute;
 }
 .container{
   background-color: white;
   width: 65%;
   min-height: 100vh;
   position: relative;
-  margin: 0 auto;
+  margin: 35px auto 0;
   text-align: left;
+  box-shadow: 0 0 15px #000;
 }

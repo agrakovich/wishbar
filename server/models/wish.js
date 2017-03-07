@@ -5,7 +5,7 @@ const ObjectId = Schema.ObjectId;
 
 const Wish = new Schema({
     userId: { type: ObjectId, required: true },
-    choice: [ObjectId],
+    choice: [{type: ObjectId, ref: 'WishType'}],
     note: { type: String },
     dateCreated: { type: Date, default: Date.now },
     status: {

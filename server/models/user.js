@@ -7,7 +7,7 @@ const User = new Schema({
     dateCreated: { type: Date, default: Date.now },
     role: {
         type: String,
-        enum: ['garson', 'client', 'manager'],
+        enum: ['garson', 'client', 'manager', 'admin'],
         required: true
     },
     password: { type: String, default: null }

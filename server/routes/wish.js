@@ -155,7 +155,7 @@ wishRoutes.post('/wish', (req, res) => {
             });
             wishModel.save((err) => {
                 if (!err) {
-                    //botService.sendMessage(`....................... **Новый заказ** .......................\n\n\n\n${wishes.map((w, index) => {return `${index + 1}) ${w.name}\n\n`})}**Примечание:** ${note ? note : ''}\n\n**Клиент:** ${user.name}(${user.place})\n\n\n\n....................................  ${moment(wishModel.dateCreated).format("HH:mm:ss")}  ....................................`);
+                    botService.sendMessage(`....................... **Новый заказ** .......................\n\n\n\n${wishes.map((w, index) => {return `${index + 1}) ${w.name}\n\n`})}**Примечание:** ${note ? note : ''}\n\n**Клиент:** ${user.name}(${user.place})\n\n\n\n....................................  ${moment(wishModel.dateCreated).format("HH:mm:ss")}  ....................................`);
                     return res.send({status: 'OK'});
                 } else {
                     console.log(err);

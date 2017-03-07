@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server/server.js"
+    "start": "node server/server.js",
+    "build": "webpack ./client/index.js main.js"
   },
   "repository": {
     "type": "git",

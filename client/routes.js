@@ -3,7 +3,7 @@ import { Route, IndexRoute } from 'react-router';
 import App from './components/App';
 import HomePage from './components/home/HomePage';
 import LogInPage from './components/LogInPage';
-import AdminLogInPage from './components/AdminLogInPage';
+import AdminLogInPage from './components/AdminLoginPage';
 import AdminPanel from './components/AdminPanel';
 import WishCategoriesPage from './components/wishcategory/WishCategoriesPage';
 import AddWishCategoryPage from './components/wishcategory/AddWishCategoryPage';

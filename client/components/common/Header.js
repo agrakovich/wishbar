@@ -21,8 +21,7 @@ class Header extends React.Component {
         return (
             <header>
                 <div className="row header">
-                    <div className="col-xs-12 col-sm-6 col-md-8">
-                        <img src="http://image.prntscr.com/image/7cd28215a7f7487cbec0e313187da028.png">
+                    <div className="col-xs-12 col-sm-6 col-md-8">                       
                         <h1>Кафе желаний "Плексочка"</h1>
                     </div>
                     <div className="col-xs-6 col-md-4">

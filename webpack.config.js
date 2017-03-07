@@ -11,8 +11,8 @@ module.exports = {
         './client/index'
     ],
     output: {
-        path: path.resolve(__dirname, './public/assets'),
-        publicPath: '/assets/',
+        path: path.resolve(__dirname, '/'),
+        publicPath: '/',
         sourcePrefix: '  ',
         filename: 'main.js'
     },

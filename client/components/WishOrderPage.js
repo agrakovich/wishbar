@@ -93,10 +93,7 @@ class WishOrderPage extends React.Component {
                         className="btn btn-primary"
                         onClick={this.onSave}>Оформить заказ</button>
                     {" "}
-                </form>
-                <div><h3>Наша команда</h3>
-                    <img src="http://image.prntscr.com/image/2a3cbff54e46402ab032a36b141fdf4b.png">
-                </div>
+                </form>                
             </div>
         );
     }

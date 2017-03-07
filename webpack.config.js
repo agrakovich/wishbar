@@ -12,7 +12,7 @@ module.exports = {
     ],
     output: {
         path: path.resolve(__dirname, './public/assets'),
-        publicPath: '/assets/',
+        //publicPath: '/assets/',
         sourcePrefix: '  ',
         filename: 'main.js'
     },

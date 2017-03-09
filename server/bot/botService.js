@@ -17,8 +17,8 @@ let botService = () => {
         useAuth: true
     };
     self.connector = new builder.ChatConnector({
-        appId: 'f03030fe-01cf-4567-854a-bd43dd87b17f',
-        appPassword: 'QpLvzkYsYBXG3YmmM9Y1FqH'
+        appId: '',
+        appPassword: ''
     });
     self.bot = new builder.UniversalBot(self.connector);
     self.bot.dialog('/', (session) => {

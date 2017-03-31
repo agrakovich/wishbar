@@ -6,7 +6,7 @@ let botService = () => {
     self.address =  {
         conversation:
         { isGroup: true,
-            id: '19:867e1e59ab9b4fc79bed40dbc69394d3@thread.skype'
+            id: ''
         },
         bot:
         {

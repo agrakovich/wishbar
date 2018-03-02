@@ -33,7 +33,6 @@ adminRoutes.post('/signin', (req, res) => {
 });
 
 function generateToken(user) {
-
     return jwt.sign(user, config.secret_key, {
         expiresIn: 60 * 60 * 24 // expires in 24 hours
     });

@@ -9,6 +9,7 @@ const WishType = new Schema({
     },
     description: { type: String },
     category: { type: ObjectId, ref: 'WishTypeCategory' },
+    isDisabled: { type: Boolean }
 });
 
 module.exports = mongoose.model('WishType', WishType);

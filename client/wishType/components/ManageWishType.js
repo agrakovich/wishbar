@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as wishActions from '../../actions/wishActions';
 import { Link } from 'react-router';
-import { IconButton, Dialog, TextField, FlatButton, SelectField, MenuItem } from 'material-ui';
+import { IconButton, Dialog } from 'material-ui';
 import '../wish.scss';
 
 class WishTypesPage extends React.Component {
@@ -13,7 +13,6 @@ class WishTypesPage extends React.Component {
 
     componentWillMount(){
         this.props.actions.getWishTypes();
-        this.props.actions.getWishCategories();
     }
 
     removeType(event){
@@ -21,39 +20,9 @@ class WishTypesPage extends React.Component {
     }
 
     render() {
-        const { wishTypes, wishCategories } = this.props;
-
-        const dialogActions = [
-            <FlatButton
-              label="Cancel"
-              primary={true}
-            />,
-            <FlatButton
-              label="Submit"
-              keyboardFocused={true}
-            />,
-          ];
+        const { wishTypes } = this.props;
         return (
             <div>
-                <Dialog
-                    title="Добавить желание"
-                    actions={ dialogActions }
-                    modal={false}
-                    open={ true }
-                >
-                    <TextField hintText="Название" />
-                    <SelectField>
-                        {
-                            wishCategories.map((category) => (
-                                <MenuItem 
-                                    key={ category._id }
-                                    value={ category._id } 
-                                    primaryText={ category.name } />
-                            ))
-                        }
-                    </SelectField>
-                </Dialog>
-
                 <h2>Желания</h2>
                 <Link to="/admin/wish/types/add">Добавить</Link>
                 <Link to="/admin/panel">Админка</Link>
@@ -97,8 +66,7 @@ class WishTypesPage extends React.Component {
 
 function mapStateToProps(state, ownProps) {
     return{
-        wishTypes: state.wish.wishTypes,
-        wishCategories: state.wish.wishCategories
+        wishTypes: state.wish.wishTypes
     }
 };
 

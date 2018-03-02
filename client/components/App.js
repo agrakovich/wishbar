@@ -1,16 +1,21 @@
 import React, {PropTypes} from 'react';
+import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Header from './common/Header';
 import './app.scss'
 
 class App extends React.Component {
     render() {
         return (
-            <div className>
-                <Header />
-                <div className="main-content row">
-                    {this.props.children}
+            <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
+                <div className>
+                    <Header />
+                    <div className="main-content row">
+                        {this.props.children}
+                    </div>
                 </div>
-            </div>
+            </MuiThemeProvider>
         );
     }
 }

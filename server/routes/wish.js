@@ -7,6 +7,21 @@ const botService = require('../bot/botService');
 const moment = require('moment');
 const wishRoutes = express.Router();
 
+function handleSaving(error, response){
+    if (!error) {
+        return response.send({ status: 'OK' });
+    } else {
+        console.log(error);
+        if(error.name == 'ValidationError') {
+            response.statusCode = 400;
+            response.send({ error: 'Validation error' });
+        } else {
+            response.statusCode = 500;
+            response.send({ error: 'Server error' });
+        }
+    }
+}
+
 wishRoutes.get('/wishtype', (req, res) => {
     return WishTypeModel.find().populate('category').exec((err, wishes) => {
         if (!err) {
@@ -15,6 +30,23 @@ wishRoutes.get('/wishtype', (req, res) => {
             res.statusCode = 500;
             return res.send({ error: 'Server error' });
         }
+    });
+});
+
+wishroutes.put('/wishtype', (req, res) => {
+    return WishTypeModel.findById(mongoose.Types.ObjectId(req.query.id), (err, wishType) => {
+        if(!wishType) {
+            res.statusCode = 404;
+            return res.send({ error: 'Not found' });
+        }
+
+        wishType.name = req.body.name;
+        wishType.description = req.body.description;
+        wishType.category = req.body.category;
+
+        return wishType.save((err) => {
+            handleSaving(err, res);
+        });
     });
 });
 
@@ -35,18 +67,7 @@ wishRoutes.post('/wishtype', (req, res) => {
     });
 
     wishType.save((err) => {
-        if (!err) {
-            return res.send({ status: 'OK' });
-        } else {
-            console.log(err);
-            if(err.name == 'ValidationError') {
-                res.statusCode = 400;
-                res.send({ error: 'Validation error' });
-            } else {
-                res.statusCode = 500;
-                res.send({ error: 'Server error' });
-            }
-        }
+        handleSaving(err, res);
     });
 });
 
@@ -96,18 +117,7 @@ wishRoutes.post('/wishcategory', (req, res) => {
     });
 
     wishCategory.save((err) => {
-        if (!err) {
-            return res.send({ status: 'OK' });
-        } else {
-            console.log(err);
-            if(err.name == 'ValidationError') {
-                res.statusCode = 400;
-                res.send({ error: 'Validation error' });
-            } else {
-                res.statusCode = 500;
-                res.send({ error: 'Server error' });
-            }
-        }
+        handleSaving(err, res);
     });
 });
 

@@ -10,8 +10,8 @@ let botService = () => {
         },
         bot:
         {
-            id: '',
-            name: ''
+            id: '28:f03030fe-01cf-4567-854a-bd43dd87b17f',
+            name: 'wishbar_bot'
         },
         serviceUrl: 'https://smba.trafficmanager.net/apis/',
         useAuth: true

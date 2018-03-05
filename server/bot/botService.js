@@ -6,19 +6,19 @@ let botService = () => {
     self.address =  {
         conversation:
         { isGroup: true,
-            id: ''
+            id: '19:867e1e59ab9b4fc79bed40dbc69394d3@thread.skype'
         },
         bot:
         {
-            id: '',
-            name: ''
+            id: '28:f03030fe-01cf-4567-854a-bd43dd87b17f',
+            name: 'wishbar_bot'
         },
         serviceUrl: 'https://smba.trafficmanager.net/apis/',
         useAuth: true
     };
     self.connector = new builder.ChatConnector({
-        appId: '',
-        appPassword: ''
+        appId: 'f03030fe-01cf-4567-854a-bd43dd87b17f',
+        appPassword: 'QpLvzkYsYBXG3YmmM9Y1FqH'
     });
     self.bot = new builder.UniversalBot(self.connector);
     self.bot.dialog('/', (session) => {

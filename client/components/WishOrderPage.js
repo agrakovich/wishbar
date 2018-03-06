@@ -61,7 +61,7 @@ class WishOrderPage extends React.Component {
                 <form className="orderWishForm wishtypes-list">
                     <div className="form-group row">
                         {Object.keys(this.props.wishTypes).map((key, index) => {
-                            const wishTypes = props.wishTypes[key];
+                            const wishTypes = this.props.wishTypes[key];
                             return (
                                 <div key={index}>
                                     <span 

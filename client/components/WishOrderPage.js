@@ -61,10 +61,15 @@ class WishOrderPage extends React.Component {
                 <form className="orderWishForm wishtypes-list">
                     <div className="form-group row">
                         {Object.keys(this.props.wishTypes).map((key, index) => {
+                            const wishTypes = props.wishTypes[key];
                             return (
                                 <div key={index}>
-                                    <span className="category-title">{key}</span>
-                                    {this.props.wishTypes[key].map((wishType, index) => {
+                                    <span 
+                                        // FIXME: remove that hack and add checking for null and undefined
+                                        title={ wishTypes[0].category.description }
+                                        className="category-title"
+                                    >{key}</span>
+                                    { wishTypes[key].map((wishType, index) => {
                                         return (
                                             <div className="form-check" key={wishType._id}>
                                                 <label title={wishType.description} className="form-check-label">

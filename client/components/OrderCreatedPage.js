@@ -7,7 +7,7 @@ class OrderCreatedPage extends React.Component {
         return (
             <div>
                 <div className="home-content">
-                    Спасибо! Ваш заказ формлен, и в ближайшее время будет выполнен
+                    Спасибо! Ваш заказ оформлен, и в ближайшее время будет выполнен
                 </div>
                 <div className="make-order"><Link className={"btn btn-primary"} to="/">На главную</Link></div>
             </div>);

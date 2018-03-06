@@ -69,7 +69,7 @@ class WishOrderPage extends React.Component {
                                         title={ wishTypes[0].category.description }
                                         className="category-title"
                                     >{key}</span>
-                                    { wishTypes[key].map((wishType, index) => {
+                                    { wishTypes.map((wishType, index) => {
                                         return (
                                             <div className="form-check" key={wishType._id}>
                                                 <label title={wishType.description} className="form-check-label">
